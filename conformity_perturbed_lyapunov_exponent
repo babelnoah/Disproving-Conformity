@@ -1,0 +1,56 @@
+import numpy as np
+
+def create_matrix(k, p, delta_c, delta_n):
+    W = np.zeros((2, 2))
+
+    W[0][0] = 1 - k * (1-p) - k * delta_c * np.sqrt(p * (1 - p))
+    W[0][1] = k * (1 - p) + k * delta_c * np.sqrt(p * (1 - p))
+    W[1][0] = k * p - k * delta_n * np.sqrt(p * (1 - p))
+    W[1][1] = 1 - k * p + k * delta_n * np.sqrt(p * (1 - p))
+
+    return W
+
+def compute_lyapunov_exponent(W, iterations=1000):
+    v = np.random.rand(2)
+    v /= np.linalg.norm(v)
+    
+    for t in range(1, iterations+1):
+        v = np.dot(W, v)
+        v /= np.linalg.norm(v)  # renormalize the vector at each step
+
+    lambda_ = np.log(np.linalg.norm(v))
+    return lambda_ / iterations
+
+def evaluate_perturbations(param_name, base_value, perturbation=0.01, iterations=100000):
+    # Make a slight perturbation on the parameter
+    perturbed_value = base_value + perturbation
+
+    if param_name == 'k':
+        W = create_matrix(perturbed_value, p, delta_c, delta_n)
+    elif param_name == 'p':
+        W = create_matrix(k, perturbed_value, delta_c, delta_n)
+    elif param_name == 'delta_c':
+        W = create_matrix(k, p, perturbed_value, delta_n)
+    elif param_name == 'delta_n':
+        W = create_matrix(k, p, delta_c, perturbed_value)
+    else:
+        raise ValueError("Invalid parameter name")
+    
+    # Compute the Lyapunov exponent for the perturbed matrix
+    perturbed_lyapunov = compute_lyapunov_exponent(W, iterations)
+
+    print(f"Lyapunov Exponent for perturbed {param_name}:", perturbed_lyapunov)
+
+# Setting up parameters
+k = 0.5
+p = 0.5
+delta_c = 0
+delta_n = 0.4
+
+W = create_matrix(k, p, delta_c, delta_n)
+base_lyapunov = compute_lyapunov_exponent(W)
+print("Base Maximal Lyapunov Exponent:", base_lyapunov)
+
+# Evaluate the change in the Lyapunov exponent for slight perturbations in each parameter
+for param in ['k', 'p', 'delta_c', 'delta_n']:
+    evaluate_perturbations(param, eval(param))
