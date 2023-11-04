@@ -1,13 +1,13 @@
-# Disproving-Conformity
+# Disproving Conformity Model
 Code identifies discrepancies in the mathematical model proposed by Smaldino and Epstein in "Social conformity despite individual preferences for distinctiveness" published in Royal Society (used as evidence).
 
-## Relevant paper disproven:
+## Relevant Analysis
 
 The paper in question can be found through the following link:
 
 [Social conformity despite individual preferences for distinctiveness](https://royalsocietypublishing.org/doi/10.1098/rsos.140437)
 
-This peer-reviewed article was scrutinized through the application of various statistical and linear algebra methods of the original study's analysis. We identify a potential discrepancy within the model that arises under the assumption of stable equilibrium. Our analysis suggests that the positions of conformists and non-conformists tend towards infinity for the distance between them to approach a constant.Contrary to what might be expected, the average positions of conformists and non-conformists always diverge. This continual divergence can be explained by the inherent structure of the preference functions and the adjustment mechanism. We can analyze the stability of this system by calculating the spectral radius of the matrix. A spectral radius equal to 1 indicates a neutral equilibrium where the system does not move once it reaches the equilibrium state. Solving the characteristic equation of the matrix yields eigenvalues λ₁ = 0.6 and λ₂ = 1. Indeed, this aligns expected stabilization of the xC and xN  growth rate, causing the relative distance between them to remain constant, converging to a value of 0.25.
+This peer-reviewed article was scrutinized through the application of various statistical and linear algebra methods of the original study's analysis. We identify a potential discrepancy within the model that arises under the assumption of stable equilibrium. Our analysis suggests that the positions of conformists and non-conformists tend towards infinity for the distance between them to approach a constant. Contrary to what might be expected, the average positions of conformists and non-conformists always diverge. This continual divergence can be explained by the inherent structure of the preference functions and the adjustment mechanism. We can analyze the stability of this system by calculating the spectral radius of the matrix. A spectral radius equal to 1 indicates a neutral equilibrium where the system does not move once it reaches the equilibrium state. Solving the characteristic equation of the matrix yields eigenvalues λ₁ = 0.6 and λ₂ = 1. Indeed, this aligns expected stabilization of the xC and xN  growth rate, causing the relative distance between them to remain constant, converging to a value of 0.25.
 
 ![conformity_rate_2](https://github.com/babelnoah/Disproving-Conformity/assets/114769700/b280fd59-ac12-41ce-bd13-46268d749a6c)
 
