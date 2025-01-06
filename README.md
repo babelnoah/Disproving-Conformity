@@ -17,8 +17,6 @@ However, the dominant eigenvalue λ₂ = 1 with its corresponding symmetric eige
 
 To unravel the system's behavior computationally, I commenced with a mixed population of conformists and non-conformists. Iterative position updates were executed until 10^6 iterations were reached.
 
-These results have been sent to The Royal Society, and the paper is being considered for retraction. 
-
 ## Acknowledgements
 
 Some of the computing for this project was performed on the Sherlock cluster. I would like to thank Stanford University and the Stanford Research Computing Center for providing computational resources and support that contributed to these research results.
